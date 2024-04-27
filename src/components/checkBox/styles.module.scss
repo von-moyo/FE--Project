@@ -1,0 +1,64 @@
+/* Check */
+.check {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+
+  &.right {
+    flex-direction: row;
+  }
+  &.left {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+}
+.check input {
+  display: none;
+}
+.mark {
+  height: 16px;
+  width: 16px;
+  min-width: 16px;
+  background-color: transparent;
+  transition: all 0.3s ease-in;
+  border: 1px solid var(--text-main);
+  display: block;
+  border-radius: 2px;
+
+  &.right {
+    margin-left: 1rem;
+  }
+  &.left {
+    margin-right: 1rem;
+  }
+}
+
+.check input:checked ~ .mark {
+  background-color: var(--brand-accent);
+  border-color: var(--brand-accent);
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+.dark input:checked ~ .mark {
+  background-color: var(--text-main);
+  border-color: var(--text-main);
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+.check .mark::after {
+  position: absolute;
+  content: "";
+  border-radius: 5px;
+}
+.check input:checked ~ .mark::after {
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  border-radius: 0;
+  transition: 0s;
+  top: 45%;
+  left: 20%;
+  transform: rotate(45deg) scale(1) translate(-50%, -50%);
+  width: 36%;
+  height: 63%;
+}

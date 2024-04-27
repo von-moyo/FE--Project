@@ -1,0 +1,86 @@
+.inputWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background: transparent;
+  margin-bottom: 13px;
+}
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  padding: 0;
+  color: var(--text-other);
+  margin-bottom: 0px;
+}
+.message {
+  font-size: 12px;
+  color: var(--red);
+  display: block;
+  margin-top: 8px;
+}
+.message svg {
+  width: 16px;
+  margin-right: 4px;
+}
+.input {
+  height: 44px;
+  padding-left: 1rem;
+  border: 2px solid var(--border-1);
+  border-radius: 5px;
+  font-size: 14px;
+  padding-right: 0.265rem;
+}
+
+.showInput {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid var(--border-1);
+  border-radius: 5px;
+  
+  .input{
+    border: none;
+  }
+
+  .show {
+    padding-right: 1rem;
+    font-size: 13px;
+    color:  var(--blue-1);
+    cursor: pointer;
+  }
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--blue-2);
+}
+.textarea {
+  padding-left: 1rem;
+  padding-top: 12px;
+  margin-top: 10px;
+  border: 2px solid var(--border-1);
+  border-radius: 10px;
+  font-size: 14px;
+  resize: none;
+  height: 200px;
+}
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 2.2rem;
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+}
+.error label {
+  color: var(--red);
+}
+.error .input {
+  background: #fffafa;
+}
+.req {
+  color: var(--red);
+  font-weight: 600;
+}

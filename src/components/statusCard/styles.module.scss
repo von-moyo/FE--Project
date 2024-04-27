@@ -1,0 +1,82 @@
+.sort {
+  color: var(--text-other);
+  font-weight: 500;
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  margin-top: 5px;
+}
+
+.sortList {
+  border: var(--border-1);
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  border-radius: 5px;
+  width: fit-content;
+  position: absolute;
+  background: var(--bg-main);
+  padding: 20px;
+  min-width: 180px;
+  margin: 15px 0px 0px 0px;
+  right: 0.5rem;
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .eye {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 14px;
+
+      .fill {
+        path {
+          fill: #fff;
+          stroke: var(--text-other);
+          stroke-width: 1;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .sortList {
+    min-width: fit-content;
+    right: 0.5rem;
+    padding: 15px 30px 15px 15px;
+
+    &__items {
+      gap: 10px;
+
+      .eye {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .sortList {
+    right: 1rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .sortList {
+    min-width: fit-content;
+    right: 1rem;
+    padding: 10px 25px 10px 10px;
+
+    &__items {
+      gap: 10px;
+
+      .eye {
+        font-size: 10px;
+
+        .fill {
+          width: 10px;
+        }
+      }
+    }
+  }
+}

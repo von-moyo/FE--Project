@@ -1,0 +1,86 @@
+.users {
+  padding: 23px 12%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid var(--grey-4);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+
+  .icon {
+    width: 100%;
+    height: auto;
+    background: #f8edf9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .userss {
+    background: rgba(223, 24, 255, 0.1);
+  }
+
+  .active {
+    background: rgba(87, 24, 255, 0.1);
+  }
+
+  .loans {
+    background: rgba(245, 95, 68, 0.1);
+  }
+
+  .savings {
+    background: rgba(255, 51, 102, 0.1);
+  }
+
+  .usersHead {
+    font-size: var(--body-text);
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .usersNumber {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .users {
+    .usersHead {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .usersNumber {
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .users {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 5%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .users {
+    padding: 10px 5%;
+
+    .usersHead {
+      font-size: 12px;
+    }
+
+    .usersNumber {
+      font-size: 16px;
+    }
+  }
+}

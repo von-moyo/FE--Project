@@ -1,0 +1,156 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* transition: 0.3s; */
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  font-weight: 300;
+  src: url('./assets/fonts/AvenirNextLTPro-Regular.otf') format('opentype');
+}
+
+
+@font-face {
+  font-family: 'Avenir';
+  font-weight: 700;
+  src: url('./assets/fonts/AvenirNextLTPro-Bold.otf') format('opentype');
+} 
+
+@font-face {
+  font-family: 'WorkSans';
+  src: url('./assets/fonts/worksans.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SFCompactText';
+  src: url('./assets/fonts/SFCompactText.ttf') format('truetype');
+}
+
+
+
+:root {
+  /* Brand Colors */
+  --brand-accent: #00b5e8;
+  --brand-hover: #3ac6ff;
+  --brand-pressed: #0fa9e8;
+
+  /* Blue Colors */
+  --blue-1: rgba(84, 95, 125, 0.7);
+  --blue-2: rgba(84, 95, 125, 0.4);
+
+  /* Border */
+  --border-1: 1px solid rgba(33, 63, 125, 0.2);
+  --border-image: 1px solid #8691a3;
+
+  /* Text Colors */
+  --text-main: rgba(33, 63, 125, 1);
+  --text-secondary: rgba(33, 63, 125, 0.7);
+  --text-tetiary: rgba(33, 63, 125, 0.6);
+  --text-other: rgba(84, 95, 125, 1);
+
+  /* Background Colors */
+  --bg-main: #ffffff;
+  --bg-image: #fafbfd;
+
+  /* Box Shadow */
+  --shadow: 4px 0px 4px rgba(0,0,0,0.03)
+
+  /* Font Sizes */
+  --heading-1: 44px;
+  --heading-2: 30px;
+  --heading-3: 22px;
+  --heading-4: 16px;
+  --body-text: 14px;
+  --caption: 12px;
+
+
+  /* Other Colors */
+  --red: #ff1f1f;
+}
+
+body {
+  margin: 0;
+  font-family: 'WorkSans', sans-serif, 'SFCompactText', 'Avenir';
+  color: var(--text-secondary);
+  font-size: var(--body-text);
+  background: var(--bg-main);
+}
+
+button,
+input, textarea {
+  font-family: 'WorkSans', sans-serif;
+  outline: none;
+}
+
+/* width and height */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--grey-2);
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--brand-accent);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-accent);
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+.appContainer {
+  max-width: 1250px;
+  margin: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .appContainer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+img,
+svg {
+  /* width: 100%; */
+  height: 100%;
+}
+
+fieldset {
+  border: none;
+  width: 100%;
+}
+
+input:auto-fill {
+  background: transparent;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
