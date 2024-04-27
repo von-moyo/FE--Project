@@ -22,7 +22,6 @@ import { Link } from "react-router-dom";
 import { Routes } from "router/routes";
 import styles from "./styles.module.scss";
 import { useState } from "react";
-import { MyContext } from "context/search";
 
 interface SidebarType {
   active: customerPages;
@@ -211,11 +210,9 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
     return searchTerm;
   };
 
-  const {text, setText} = React.useContext(MyContext)
 
   const handleSearch = (s: string) => {
     setSearchTerm(s);
-    setText(s);
   };
 
   return (
@@ -237,7 +234,11 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
         </nav>
         <header className={styles.navBar}>
           <div className={styles.profileSec}>
-            <img src={logo} alt="" className={styles.logo} />
+            
+            <div className={styles.sty}>
+              <img src={logo} alt="" className={styles.logo} />
+              GeekyNigeria
+            </div>
             <Search
               className={styles.search}
               value={searchTerm}
@@ -255,7 +256,7 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
                 className={styles.img}
               />
               <div className={styles.name}>
-                <p>Adedeji</p>
+                <p>Adekogbe</p>
                 <DropdownIcon />
               </div>
             </div>

@@ -1,5 +1,5 @@
 import {
-  Users,
+  Products,
 } from "pages";
 import { LayoutRouteProps } from "react-router-dom";
 import { Routes } from "./routes";
@@ -31,7 +31,7 @@ export interface RouteBuilderItem extends LayoutRouteProps {
 export const RouteBuilder: RouteBuilderItem[] = [
   {
     path: Routes.products,
-    Element: Users,
+    Element: Products,
     Layout: Layout,
     props: {
       active: "Users",

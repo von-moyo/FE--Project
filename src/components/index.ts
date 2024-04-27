@@ -1,6 +1,5 @@
 export * from "./button";
 export * from "./logo";
-export * from "./dropdown";
 export * from "./form";
 export * from "./modal";
 export * from "./preloader";
@@ -8,5 +7,4 @@ export * from "./search";
 export * from "./pagination";
 export * from "./checkBox";
 export * from "./miniCard";
-export * from "./filter";
 export * from "./statusCard"
