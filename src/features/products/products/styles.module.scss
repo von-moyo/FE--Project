@@ -17,6 +17,13 @@
     }
   }
 
+  .charts {
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
   .miniCard {
     width: 100%;
     margin: 24px 0px 40px 0px;

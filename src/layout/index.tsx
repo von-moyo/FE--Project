@@ -22,6 +22,8 @@ import { Link } from "react-router-dom";
 import { Routes } from "router/routes";
 import styles from "./styles.module.scss";
 import { useState } from "react";
+import { useAppDispatch } from "store/store";
+import { addPerson } from "store/features/personSlice";
 
 interface SidebarType {
   active: customerPages;
@@ -87,8 +89,7 @@ type customerPages =
   | "Groceries"
   | "Home & Office";
 
-type businessPages =
-  | "Organization"
+type businessPages = "Organization";
 
 export interface LayoutProps {
   active: customerPages;
@@ -197,19 +198,19 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
       type: "link",
       action: () => setShowMenu(true),
       Icon: BusinessOrganizationIcon,
-    }
+    },
   ];
 
   const [showMenu, setShowMenu] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const name = React.useRef<string>("")
+  let dispatch = useAppDispatch();
   const menuRef = React.useRef(null);
 
   const onSearch = (searchTerm: string) => {
     return searchTerm;
   };
-
 
   const handleSearch = (s: string) => {
     setSearchTerm(s);
@@ -234,7 +235,6 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
         </nav>
         <header className={styles.navBar}>
           <div className={styles.profileSec}>
-            
             <div className={styles.sty}>
               <img src={logo} alt="" className={styles.logo} />
               GeekyNigeria
@@ -248,8 +248,20 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
                 handleSearch(e);
               }}
             />
+
+            <input
+              style={{
+                width: "100px",
+                height: "30px",
+                border: "1px solid grey",
+              }}
+              onChange={(e) => {
+                name.current = e.target.value;
+              }}
+            />
+
             <div className={styles.details}>
-              <NotificationIcon className={styles.noti} />
+              <NotificationIcon className={styles.noti} onClick={()=>dispatch(addPerson({name: name.current}))}/>
               <img
                 src={placeholderAvatar}
                 alt="avatar"
