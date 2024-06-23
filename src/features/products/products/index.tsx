@@ -1,7 +1,5 @@
-import {
-  MiniCard,
-  Pagination,
-} from "components";
+/* eslint-disable jsx-a11y/iframe-has-title */
+import { MiniCard, Pagination } from "components";
 import styles from "./styles.module.scss";
 import { Bar, Line, Doughnut } from "react-chartjs-2";
 import {
@@ -15,21 +13,34 @@ import {
   PointElement,
   Legend,
   ChartOptions,
-  plugins
-} from "chart.js"
+  plugins,
+} from "chart.js";
 import * as React from "react";
-import {useRef} from "react"
+import { useRef } from "react";
 import { useAppDispatch, useAppSelector } from "store/store";
 import { addPerson } from "store/features/personSlice";
 
-ChartJS.register(BarElement, LineElement, ArcElement, CategoryScale, LinearScale, PointElement, Legend, Tooltip);
+ChartJS.register(
+  BarElement,
+  LineElement,
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Legend,
+  Tooltip
+);
 
 const centerLabelPlugin = {
-  id: 'centerLabel',
+  id: "centerLabel",
   afterDraw: (chart: {
-    config: any; ctx: any; width: any; height: any; data: { datasets: { data: any; }[]; }; 
-}) => {
-    if (chart.config.type !== 'doughnut') return;
+    config: any;
+    ctx: any;
+    width: any;
+    height: any;
+    data: { datasets: { data: any }[] };
+  }) => {
+    if (chart.config.type !== "doughnut") return;
     const ctx = chart.ctx;
     const canvasWidth = chart.width;
     const canvasHeight = chart.height;
@@ -42,10 +53,10 @@ const centerLabelPlugin = {
     const labelText = `${total.toString()} candidates`; // You can customize this label as needed
 
     // Font properties
-    ctx.font = '20px Arial';
-    ctx.fillStyle = '#000';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "#000";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
 
     // Calculate center coordinates
     const centerX = canvasWidth / 2;
@@ -53,7 +64,7 @@ const centerLabelPlugin = {
 
     // Draw the text in the center
     ctx.fillText(labelText, centerX, centerY);
-  }
+  },
 };
 
 // Register the plugin
@@ -71,11 +82,7 @@ interface UsersProps {
   };
 }
 
-const ProductsUI: React.FC<UsersProps> = ({
-  products,
-  pagination,
-}) => {
-
+const ProductsUI: React.FC<UsersProps> = ({ products, pagination }) => {
   const data = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
@@ -86,16 +93,15 @@ const ProductsUI: React.FC<UsersProps> = ({
         borderColor: ["red", "green", "yellow", "black", "blue", "orange"],
         pointBorderColor: "black",
         fill: true,
-        pointRadius: 1,-=-
+        pointRadius: 1,
         borderWidth: 2,
       }
     ]
   };
-
   const options: ChartOptions = {
     plugins: {
       legend: {
-        display: false
+        display: false,
       },
       tooltip: {
         callbacks: {
@@ -108,11 +114,10 @@ const ProductsUI: React.FC<UsersProps> = ({
       },
       title: {
         display: true,
-        text: "Chart.js Line Chart"
-      }
+        text: "Chart.js Line Chart",
+      },
     },
-
-  }
+  };
 
   const doughnutData = {
     labels: ["Continuers", "Retakers"],
@@ -121,61 +126,62 @@ const ProductsUI: React.FC<UsersProps> = ({
         data: [242, 400],
         backgroundColor: ["blue", "gray"],
         borderWidth: 0,
-      }
-    ]
-  }
+      },
+    ],
+  };
 
   const doughnutOptions: ChartOptions = {
     plugins: {
       legend: {
-        display: true
+        display: true,
       },
       tooltip: {
         callbacks: {
-          label: context => {
+          label: (context) => {
             const label = doughnutData.labels[context.dataIndex];
             return `${label}: candidates`;
-          }
-        }
+          },
+        },
       },
       title: {
         display: true,
-        text: "Doughnut Chart with Center Label"
-      }
+        text: "Doughnut Chart with Center Label",
+      },
     },
   };
-  
-  const persons = useAppSelector(state=>state.person.persons)
+
+  const persons = useAppSelector((state) => state.person.persons);
 
   return (
     <div className={styles.users}>
       <h1 className={styles.ttl}>Products</h1>
+      <section className={styles.sofascore}>
+        <iframe
+          title={""}
+          id="sofa-cupTree-embed-132-54105-2858330"
+          src="https://widgets.sofascore.com/embed/unique-tournament/132/season/54105/cuptree/2858330?widgetTitle=NBA 23/24 Playoffs&showCompetitionLogo=true&widgetTheme=dark"
+          style={{
+            height: "872px !important",
+            maxWidth: "700px !important",
+            width: "100% !important",
+          }}
+        ></iframe>
+      </section>
       <section className={styles.charts}>
-        <div className={styles.chart}><Bar
-          data={data}
-          options={options}
-        >
-        </Bar></div>
-        <div className={styles.chart}><Line
-          data={data}
-          options={options}
-        >
-        </Line></div>
-        <div className={styles.chart}><Doughnut
-          data={doughnutData}
-          options={doughnutOptions}
-        >
-        </Doughnut>
-          
+        <div className={styles.chart}>
+          <Bar data={data} options={options}></Bar>
+        </div>
+        <div className={styles.chart}>
+          <Line data={data} options={options}></Line>
+        </div>
+        <div className={styles.chart}>
+          <Doughnut data={doughnutData} options={doughnutOptions}></Doughnut>
         </div>
         <div>
           {persons.map((item, index) => (
-            <div key={item.id}>
-              {item.name}
-            </div>
+            <div key={item.id}>{item.name}</div>
           ))}
         </div>
-        
       </section>
       <section className={styles.miniCard}>
         {products.map((item, index) => (
