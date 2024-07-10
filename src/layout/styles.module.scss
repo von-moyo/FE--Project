@@ -8,7 +8,7 @@
 
   .sideBar {
     margin-top: 70px;
-    background: #fff;
+    background: #45454d;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@
     scrollbar-width: none;
 
     .sidebarList {
-      color: var(--white);
+      color: #ffff;
       margin-bottom: auto;
       list-style: none;
       height: 100%;
@@ -30,7 +30,7 @@
       flex-direction: column;
 
       li:first-of-type {
-        color: var(--text-main);
+        color: #ffff;
         font-weight: 400;
         font-size: 16px;
         margin-bottom: 35px;
@@ -44,7 +44,7 @@
         margin-bottom: 11px;
         padding: 8px 3.2rem 8px 1.8rem;
         font-size: var(--heading-4);
-        color: var(--text-tetiary);
+        color: #ffff;
 
         .sidebarType {
           display: flex;
@@ -63,19 +63,22 @@
             // height: 15px;
 
             path {
-              fill: var(--text-tetiary);
+              fill: #5f5f80;
             }
           }
 
           .activeIcon {
             path {
-              fill: var(--text-main);
+              fill: #5f5f80;
             }
           }
 
           .downIcon {
             transform: rotate(90deg);
             margin-left: 10px;
+            path {
+              fill: #5f5f80;
+            }
           }
         }
 
@@ -113,6 +116,7 @@
     background-color: #fff;
     z-index: 2;
     color: var(--text-main);
+    // background: #45454d;
 
     .profileSec {
       display: flex;

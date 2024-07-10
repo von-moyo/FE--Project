@@ -237,7 +237,7 @@ const Layout: React.FC<LayoutProps> = ({ active, children }) => {
           <div className={styles.profileSec}>
             <div className={styles.sty}>
               <img src={logo} alt="" className={styles.logo} />
-              GeekyNigeria
+              Project LightSpeed
             </div>
             <Search
               className={styles.search}

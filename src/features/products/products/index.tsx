@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
-import { MiniCard, Pagination } from "components";
+import { Button, MiniCard, Pagination } from "components";
 import styles from "./styles.module.scss";
 import { Bar, Line, Doughnut } from "react-chartjs-2";
 import {
@@ -30,6 +30,14 @@ ChartJS.register(
   Legend,
   Tooltip
 );
+
+declare global {
+  interface HTMLIFrameElement {
+    mozRequestFullScreen?: () => Promise<void>;
+    webkitRequestFullscreen?: () => Promise<void>;
+    msRequestFullscreen?: () => Promise<void>;
+  }
+}
 
 const centerLabelPlugin = {
   id: "centerLabel",
@@ -88,15 +96,15 @@ const ProductsUI: React.FC<UsersProps> = ({ products, pagination }) => {
     datasets: [
       {
         label: "",
-        data: [3,6,9,2,3,5],
+        data: [3, 6, 9, 2, 3, 5],
         backgroundColor: ["red", "green", "yellow", "black", "blue", "orange"],
         borderColor: ["red", "green", "yellow", "black", "blue", "orange"],
         pointBorderColor: "black",
         fill: true,
         pointRadius: 1,
         borderWidth: 2,
-      }
-    ]
+      },
+    ],
   };
   const options: ChartOptions = {
     plugins: {
@@ -151,7 +159,24 @@ const ProductsUI: React.FC<UsersProps> = ({ products, pagination }) => {
   };
 
   const persons = useAppSelector((state) => state.person.persons);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
+  const handleFullscreen = () => {
+    if (iframeRef.current) {
+      if (iframeRef.current.requestFullscreen) {
+        iframeRef.current.requestFullscreen();
+      } else if (iframeRef.current.mozRequestFullScreen) {
+        // Firefox
+        iframeRef.current.mozRequestFullScreen();
+      } else if (iframeRef.current.webkitRequestFullscreen) {
+        // Chrome, Safari and Opera
+        iframeRef.current.webkitRequestFullscreen();
+      } else if (iframeRef.current.msRequestFullscreen) {
+        // IE/Edge
+        iframeRef.current.msRequestFullscreen();
+      }
+    }
+  };
   return (
     <div className={styles.users}>
       <h1 className={styles.ttl}>Products</h1>
@@ -160,12 +185,24 @@ const ProductsUI: React.FC<UsersProps> = ({ products, pagination }) => {
           title={""}
           id="sofa-cupTree-embed-132-54105-2858330"
           src="https://widgets.sofascore.com/embed/unique-tournament/132/season/54105/cuptree/2858330?widgetTitle=NBA 23/24 Playoffs&showCompetitionLogo=true&widgetTheme=dark"
-          style={{
-            height: "872px !important",
-            maxWidth: "700px !important",
-            width: "100% !important",
-          }}
+          width="100%"
+          height="100%"
         ></iframe>
+      </section>
+      <section className={styles.strikeout}>
+        <iframe
+          ref={iframeRef}
+          src='https://embedstreams.me/euros/euro-semi-finals-netherlands-vs-england-stream-1'
+          width="100%"
+          height="100%"
+        ></iframe>
+        <Button
+          type={"primary"}
+          className={styles.fullScreen}
+          onClick={handleFullscreen}
+        >
+          Fullscreen
+        </Button>
       </section>
       <section className={styles.charts}>
         <div className={styles.chart}>
