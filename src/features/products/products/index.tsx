@@ -192,7 +192,7 @@ const ProductsUI: React.FC<UsersProps> = ({ products, pagination }) => {
       <section className={styles.strikeout}>
         <iframe
           ref={iframeRef}
-          src='https://embedstreams.me/euros/euro-semi-finals-spain-vs-england-stream-1'
+          src='https://embedstreams.me/euros/euro-2024-final-spain-vs-england-stream-1'
           width="100%"
           height="100%"
         ></iframe>
